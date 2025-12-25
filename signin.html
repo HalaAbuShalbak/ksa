@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="overflow-x-hidden">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="سجل الدخول إلى حسابك"
+    />
+    <title>تسجيل الدخول - خدماتنا</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@700;900&family=Tajawal:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#FF8059",
+              secondary: "#5FD2BB",
+              accent: "#FFCA3A",
+              background: "#F7F9FA",
+              contrast: "#22242A",
+              card: "#FFFFFF",
+              border: "#E0E3EB",
+              muted: "#B0B2B8",
+            },
+            fontFamily: {
+              cairo: ["Cairo", "sans-serif"],
+              tajawal: ["Tajawal", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Custom Styles -->
+    <style type="text/tailwindcss">
+      * {
+        box-sizing: border-box;
+      }
+      
+      html {
+        overflow-x: hidden !important;
+        width: 100%;
+        position: relative;
+      }
+      
+      body {
+        overflow-x: hidden !important;
+        width: 100%;
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+
+      @layer components {
+        .btn {
+          @apply font-tajawal py-2.5 px-6 rounded-full text-base transition-all duration-300 ease-in-out shadow-md;
+        }
+
+        .btn-primary {
+          @apply bg-primary text-white hover:bg-opacity-90;
+        }
+
+        .btn-secondary {
+          @apply bg-transparent text-primary border border-primary hover:bg-primary hover:text-white;
+        }
+
+        .form-input {
+          @apply w-full p-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background text-contrast font-tajawal;
+        }
+
+        .form-label {
+          @apply block text-sm font-medium text-contrast mb-2 font-tajawal;
+        }
+      }
+
+      @keyframes fade-in-up {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-up {
+        animation: fade-in-up 0.8s ease-out forwards;
+      }
+
+      @keyframes blob-float {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+        }
+        33% {
+          transform: translateY(-20px) scale(1.1);
+        }
+        66% {
+          transform: translateY(20px) scale(0.9);
+        }
+      }
+
+      .animate-blob-float {
+        animation: blob-float 8s ease-in-out infinite;
+      }
+
+      .password-toggle {
+        @apply absolute left-3 top-1/2 -translate-y-1/2 text-muted cursor-pointer hover:text-primary transition-colors;
+      }
+    </style>
+  </head>
+  <body class="font-tajawal text-contrast bg-background antialiased overflow-x-hidden min-h-screen">
+    <!-- Animated Blobs Background -->
+    <div class="absolute inset-0 z-0 opacity-20">
+      <div
+        class="blob-1 w-64 h-64 bg-primary rounded-full absolute top-1/4 left-1/4 animate-blob-float mix-blend-multiply filter blur-2xl"
+      ></div>
+      <div
+        class="blob-2 w-96 h-96 bg-secondary rounded-full absolute bottom-1/3 right-1/4 animate-blob-float delay-1000 mix-blend-multiply filter blur-3xl"
+      ></div>
+      <div
+        class="blob-3 w-80 h-80 bg-accent rounded-full absolute top-1/2 left-1/3 animate-blob-float delay-500 mix-blend-multiply filter blur-3xl"
+      ></div>
+    </div>
+
+    <!-- Header -->
+    <header
+      class="sticky top-0 z-50 bg-background/80 backdrop-blur-md shadow-sm"
+    >
+      <nav
+        class="container mx-auto px-4 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center">
+          <a href="index.html" class="text-xl sm:text-2xl font-cairo font-bold text-primary"
+            >شعارك</a
+          >
+        </div>
+
+        <div class="flex items-center space-x-3 space-x-reverse">
+          <a href="index.html" class="text-contrast hover:text-primary transition-colors font-tajawal">
+            <i class="fas fa-arrow-right ml-2"></i>
+            العودة للرئيسية
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="relative z-10 flex items-center justify-center min-h-[calc(100vh-80px)] py-12 px-4">
+      <div class="w-full max-w-md fade-in-up">
+        <!-- Sign In Card -->
+        <div class="bg-card rounded-2xl shadow-2xl p-8 md:p-10">
+          <!-- Header -->
+          <div class="text-center mb-8">
+            <div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-sign-in-alt text-primary text-3xl"></i>
+            </div>
+            <h1 class="text-3xl font-cairo font-bold text-contrast mb-2">
+              تسجيل الدخول
+            </h1>
+            <p class="text-muted font-tajawal">
+              أدخل بياناتك للدخول إلى حسابك
+            </p>
+          </div>
+
+          <!-- Form -->
+          <form id="signin-form" class="space-y-5">
+            <!-- Mobile Number or Email -->
+            <div>
+              <label for="identifier" class="form-label">
+                <i class="fas fa-user text-primary ml-2"></i>
+                رقم الجوال أو البريد الإلكتروني
+              </label>
+              <input
+                type="text"
+                id="identifier"
+                name="identifier"
+                class="form-input"
+                placeholder="أدخل رقم الجوال أو البريد الإلكتروني"
+                required
+              />
+              <span class="error-message text-red-500 text-sm hidden"></span>
+            </div>
+
+            <!-- Password -->
+            <div class="relative">
+              <label for="password" class="form-label">
+                <i class="fas fa-lock text-primary ml-2"></i>
+                كلمة المرور
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-input pr-10"
+                placeholder="أدخل كلمة المرور"
+                required
+              />
+              <button
+                type="button"
+                id="toggle-password"
+                class="password-toggle"
+                aria-label="إظهار/إخفاء كلمة المرور"
+              >
+                <i class="fas fa-eye" id="password-icon"></i>
+              </button>
+              <span class="error-message text-red-500 text-sm hidden"></span>
+            </div>
+
+            <!-- Remember Me & Forgot Password -->
+            <div class="flex items-center justify-between">
+              <label class="flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  id="rememberMe"
+                  name="rememberMe"
+                  class="w-4 h-4 text-primary border-border rounded focus:ring-primary focus:ring-2"
+                />
+                <span class="text-sm text-contrast mr-2 font-tajawal">تذكرني</span>
+              </label>
+              <a
+                href="#"
+                id="forgot-password-link"
+                class="text-sm text-primary hover:underline font-tajawal"
+              >
+                نسيت كلمة المرور؟
+              </a>
+            </div>
+
+            <!-- Submit Button -->
+            <button
+              type="submit"
+              id="signin-button"
+              class="btn btn-primary w-full mt-6"
+            >
+              <i class="fas fa-sign-in-alt ml-2"></i>
+              تسجيل الدخول
+            </button>
+
+            <!-- Loading Spinner (hidden by default) -->
+            <div id="loading-spinner" class="hidden text-center">
+              <i class="fas fa-spinner fa-spin text-primary text-2xl"></i>
+              <p class="text-muted mt-2">جاري تسجيل الدخول...</p>
+            </div>
+
+            <!-- Success Message (hidden by default) -->
+            <div id="success-message" class="hidden bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+              <i class="fas fa-check-circle text-green-500 text-3xl mb-2"></i>
+              <p class="text-green-700 font-semibold">تم تسجيل الدخول بنجاح!</p>
+            </div>
+
+            <!-- Error Message (hidden by default) -->
+            <div id="error-message" class="hidden bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+              <i class="fas fa-exclamation-circle text-red-500 text-3xl mb-2"></i>
+              <p class="text-red-700 font-semibold" id="error-text"></p>
+            </div>
+          </form>
+
+          <!-- Sign Up Link -->
+          <div class="mt-6 text-center">
+            <p class="text-muted font-tajawal">
+              ليس لديك حساب؟
+              <a href="signup.html" class="text-primary hover:underline font-semibold">
+                إنشاء حساب جديد
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-contrast text-white py-6 mt-12">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-muted text-sm">
+          جميع الحقوق محفوظة &copy; 2023
+        </p>
+      </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <!-- Sign In Form Script -->
+    <script>
+      $(document).ready(function() {
+        const form = $('#signin-form');
+        const signinButton = $('#signin-button');
+        const loadingSpinner = $('#loading-spinner');
+        const successMessage = $('#success-message');
+        const errorMessage = $('#error-message');
+        const errorText = $('#error-text');
+        const togglePassword = $('#toggle-password');
+        const passwordInput = $('#password');
+        const passwordIcon = $('#password-icon');
+
+        // API endpoint - Replace with your actual API endpoint
+        const API_ENDPOINT = 'https://your-api-endpoint.com/api/signin';
+
+        // Toggle password visibility
+        togglePassword.on('click', function() {
+          const type = passwordInput.attr('type') === 'password' ? 'text' : 'password';
+          passwordInput.attr('type', type);
+          
+          if (type === 'password') {
+            passwordIcon.removeClass('fa-eye-slash').addClass('fa-eye');
+          } else {
+            passwordIcon.removeClass('fa-eye').addClass('fa-eye-slash');
+          }
+        });
+
+        // Form validation
+        function validateForm() {
+          let isValid = true;
+          const identifier = $('#identifier').val().trim();
+          const password = $('#password').val();
+
+          // Reset error messages
+          $('.error-message').addClass('hidden').text('');
+
+          // Validate Identifier
+          if (!identifier) {
+            $('#identifier').next('.error-message').text('الرجاء إدخال رقم الجوال أو البريد الإلكتروني').removeClass('hidden');
+            isValid = false;
+          }
+
+          // Validate Password
+          if (!password) {
+            $('#password').next('.error-message').text('الرجاء إدخال كلمة المرور').removeClass('hidden');
+            isValid = false;
+          } else if (password.length < 6) {
+            $('#password').next('.error-message').text('كلمة المرور يجب أن تكون 6 أحرف على الأقل').removeClass('hidden');
+            isValid = false;
+          }
+
+          return isValid;
+        }
+
+        // Form submission
+        form.on('submit', function(e) {
+          e.preventDefault();
+
+          // Hide previous messages
+          successMessage.addClass('hidden');
+          errorMessage.addClass('hidden');
+
+          // Validate form
+          if (!validateForm()) {
+            return;
+          }
+
+          // Prepare form data
+          const formData = {
+            identifier: $('#identifier').val().trim(),
+            password: $('#password').val(),
+            rememberMe: $('#rememberMe').is(':checked')
+          };
+
+          // Show loading state
+          signinButton.addClass('hidden');
+          loadingSpinner.removeClass('hidden');
+          form.find('input').prop('disabled', true);
+
+          // Send API request
+          $.ajax({
+            url: API_ENDPOINT,
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(formData),
+            success: function(response) {
+              // Hide loading spinner
+              loadingSpinner.addClass('hidden');
+              
+              // Show success message
+              successMessage.removeClass('hidden');
+              
+              // Store token if provided
+              if (response.token) {
+                localStorage.setItem('authToken', response.token);
+              }
+              
+              // Store user data if provided
+              if (response.user) {
+                localStorage.setItem('userData', JSON.stringify(response.user));
+              }
+
+              // Store remember me preference
+              if (formData.rememberMe && response.token) {
+                localStorage.setItem('rememberMe', 'true');
+              } else {
+                localStorage.removeItem('rememberMe');
+              }
+              
+              // Scroll to success message
+              $('html, body').animate({
+                scrollTop: successMessage.offset().top - 100
+              }, 500);
+
+              // Redirect after 1.5 seconds
+              setTimeout(function() {
+                window.location.href = 'index.html'; // Redirect to home page or dashboard
+              }, 1500);
+            },
+            error: function(xhr, status, error) {
+              // Hide loading spinner
+              loadingSpinner.addClass('hidden');
+              
+              // Show error message
+              let errorMsg = 'حدث خطأ أثناء تسجيل الدخول. الرجاء المحاولة مرة أخرى.';
+              
+              if (xhr.responseJSON && xhr.responseJSON.message) {
+                errorMsg = xhr.responseJSON.message;
+              } else if (xhr.status === 0) {
+                errorMsg = 'لا يمكن الاتصال بالخادم. الرجاء التحقق من اتصالك بالإنترنت.';
+              } else if (xhr.status === 401) {
+                errorMsg = 'رقم الجوال/البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+              } else if (xhr.status === 404) {
+                errorMsg = 'الحساب غير موجود. الرجاء التحقق من البيانات المدخلة.';
+              } else if (xhr.status === 403) {
+                errorMsg = 'تم تعطيل حسابك. الرجاء التواصل مع الدعم الفني.';
+              }
+
+              errorText.text(errorMsg);
+              errorMessage.removeClass('hidden');
+              
+              // Scroll to error message
+              $('html, body').animate({
+                scrollTop: errorMessage.offset().top - 100
+              }, 500);
+            },
+            complete: function() {
+              // Re-enable form
+              signinButton.removeClass('hidden');
+              form.find('input').prop('disabled', false);
+            }
+          });
+        });
+
+        // Clear error messages on input
+        form.find('input').on('input', function() {
+          $(this).next('.error-message').addClass('hidden');
+        });
+
+        // Check if user is already logged in
+        if (localStorage.getItem('authToken')) {
+          // Optionally redirect to dashboard or show a message
+          // window.location.href = 'index.html';
+        }
+
+        // Handle forgot password link
+        $('#forgot-password-link').on('click', function(e) {
+          e.preventDefault();
+          // You can implement forgot password functionality here
+          alert('سيتم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني أو رقم جوالك.');
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
+
+<section
+id="hero"
+class="relative min-h-screen py-12 sm:py-16 md:py-0 md:h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/5"
+style="max-width: 100vw; overflow-x: hidden;"
+>
+<!-- Enhanced Animated Blobs Background with better positioning -->
+<div class="absolute inset-0 z-0 overflow-hidden">
+  <div
+    class="blob-1 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-primary/30 to-primary/10 rounded-full absolute -top-20 -right-20 md:top-1/4 md:right-1/4 animate-blob-float mix-blend-multiply filter blur-3xl"
+  ></div>
+  <div
+    class="blob-2 w-96 h-96 sm:w-[500px] sm:h-[500px] bg-gradient-to-br from-secondary/30 to-secondary/10 rounded-full absolute bottom-0 left-0 md:bottom-1/3 md:left-1/4 animate-blob-float delay-1000 mix-blend-multiply filter blur-3xl"
+  ></div>
+  <div
+    class="blob-3 w-80 h-80 sm:w-[400px] sm:h-[400px] bg-gradient-to-br from-accent/25 to-accent/10 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-blob-float delay-500 mix-blend-multiply filter blur-3xl"
+  ></div>
+  <!-- Subtle grid pattern overlay -->
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-40"></div>
+</div>
+
+<div
+  class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-rows-[auto_auto_auto] gap-6 lg:gap-8"
+  style="max-width: 100vw; overflow-x: hidden;"
+>
+  <!-- Row 1: Title (Full Width) -->
+  <h1
+    class="w-full text-center lg:text-right text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-cairo font-extrabold text-contrast leading-[1.1] tracking-tight animate-pop-up delay-300"
+    id="hero-title"
+    style="background: linear-gradient(135deg, #22242A 0%, #22242A 50%, #FF8059 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
+  ></h1>
+
+  <!-- Row 2: Subtitle + Illustration -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-20 items-center w-full">
+    <!-- Subtitle Column (Right on lg, Top on md/sm) -->
+    <div class="lg:order-2 text-center lg:text-right lg:flex lg:justify-end animate-pop-up delay-400">
+      <p
+        class="text-lg sm:text-xl md:text-2xl lg:text-2xl text-contrast/80 font-tajawal font-medium max-w-2xl mx-auto lg:mx-0 lg:mr-0 leading-relaxed"
+        id="hero-subtitle"
+      ></p>
+    </div>
+
+    <!-- Illustration Column (Left on lg, Bottom on md/sm) -->
+    <div class="lg:order-1 flex items-center justify-center relative min-h-[500px] sm:min-h-[550px] md:min-h-[500px] lg:min-h-0 overflow-hidden w-full animate-pop-up delay-700"
+      style="max-width: 100vw; overflow-x: hidden; will-change: auto;"
+    >
+
+      
+      <div
+        id="hero-css-illustration"
+        class="relative w-full max-w-[100%] sm:max-w-[100%] md:max-w-[700px] h-[500px] sm:h-[600px] md:h-[600px] lg:h-[650px] mx-auto overflow-visible z-10 flex items-center justify-center"
+        style="max-width: 100vw; overflow-x: hidden; contain: layout style paint; will-change: auto; transition: transform 0.3s ease;"
+      >
+      <!-- All Cards and Icons Container -->
+      <div class="animated-elements-container relative w-full h-full flex items-center justify-center">
+        <!-- Dashboard Card -->
+        <div class="animated-element element-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
+          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-primary/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,128,89,0.3)]" style="background: linear-gradient(135deg, rgba(255, 128, 89, 0.1) 0%, rgba(255, 128, 89, 0.05) 100%); backdrop-filter: blur(10px);">
+            <div class="icon-container bg-primary/20 rounded-2xl p-4 mb-4 shadow-lg">
+              <i class="fas fa-tachometer-alt text-primary text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
+            </div>
+            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">لوحة التحكم</div>
+          </div>
+        </div>
+
+        <!-- Review Card -->
+        <div class="animated-element element-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
+          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-accent/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,202,58,0.3)]" style="background: linear-gradient(135deg, rgba(255, 202, 58, 0.1) 0%, rgba(255, 202, 58, 0.05) 100%); backdrop-filter: blur(10px);">
+            <div class="icon-container bg-accent/20 rounded-2xl p-4 mb-4 shadow-lg">
+              <i class="fas fa-star text-accent text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
+            </div>
+            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">تقييمات</div>
+          </div>
+        </div>
+
+        <!-- Shopping Cart Card -->
+        <div class="animated-element element-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
+          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-secondary/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(95,210,187,0.3)]" style="background: linear-gradient(135deg, rgba(95, 210, 187, 0.1) 0%, rgba(95, 210, 187, 0.05) 100%); backdrop-filter: blur(10px);">
+            <div class="icon-container bg-secondary/20 rounded-2xl p-4 mb-4 shadow-lg">
+              <i class="fas fa-shopping-cart text-secondary text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
+            </div>
+            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">السلة</div>
+          </div>
+        </div>
+
+        <!-- QR Code Card -->
+        <div class="animated-element element-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
+          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-contrast/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(34,36,42,0.2)]" style="background: linear-gradient(135deg, rgba(247, 249, 250, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%); backdrop-filter: blur(10px);">
+            <div class="icon-container bg-contrast/10 rounded-2xl p-4 mb-4 shadow-lg">
+              <i class="fas fa-qrcode text-contrast text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
+            </div>
+            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">رمز QR</div>
+          </div>
+        </div>
+
+        <!-- Online Menu Card -->
+        <div class="animated-element element-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
+          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-secondary/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(95,210,187,0.3)]" style="background: linear-gradient(135deg, rgba(95, 210, 187, 0.12) 0%, rgba(95, 210, 187, 0.06) 100%); backdrop-filter: blur(10px);">
+            <div class="icon-container bg-secondary/20 rounded-2xl p-4 mb-4 shadow-lg">
+              <i class="fas fa-utensils text-secondary text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
+            </div>
+            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">القائمة الإلكترونية</div>
+          </div>
+        </div>
+
+        <!-- Laptop Review Card -->
+        <div class="animated-element element-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
+          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-accent/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,202,58,0.3)]" style="background: linear-gradient(135deg, rgba(255, 202, 58, 0.12) 0%, rgba(255, 202, 58, 0.06) 100%); backdrop-filter: blur(10px);">
+            <div class="icon-container bg-accent/20 rounded-2xl p-4 mb-4 shadow-lg">
+              <i class="fas fa-star text-accent text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
+            </div>
+            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-semibold text-center px-2">تقييمات العملاء</div>
+          </div>
+        </div>
+
+        <!-- Laptop Dashboard Card -->
+        <div class="animated-element element-7 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
+          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-primary/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,128,89,0.3)]" style="background: linear-gradient(135deg, rgba(255, 128, 89, 0.12) 0%, rgba(255, 128, 89, 0.06) 100%); backdrop-filter: blur(10px);">
+            <div class="icon-container bg-primary/20 rounded-2xl p-4 mb-4 shadow-lg">
+              <i class="fas fa-chart-line text-primary text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
+            </div>
+            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-semibold text-center px-2">لوحة تحكم النظام</div>
+          </div>
+        </div>
+
+        <!-- Laptop Shopping Cart Card -->
+        <div class="animated-element element-8 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
+          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-accent/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,202,58,0.3)]" style="background: linear-gradient(135deg, rgba(95, 210, 187, 0.15) 0%, rgba(95, 210, 187, 0.08) 100%); backdrop-filter: blur(10px);">
+            <div class="icon-container bg-accent/20 rounded-2xl p-4 mb-4 shadow-lg">
+              <i class="fas fa-shopping-cart text-accent text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
+            </div>
+            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-semibold text-center px-2">سلة التسوق</div>
+          </div>
+        </div>
+
+        <!-- Laptop Online Menu Card -->
+        <div class="animated-element element-9 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
+          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-secondary/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(95,210,187,0.3)]" style="background: linear-gradient(135deg, rgba(255, 128, 89, 0.08) 0%, rgba(95, 210, 187, 0.05) 100%); backdrop-filter: blur(10px);">
+            <div class="icon-container bg-secondary/20 rounded-2xl p-4 mb-4 shadow-lg">
+              <i class="fas fa-utensils text-secondary text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
+            </div>
+            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-semibold text-center px-2">القائمة الإلكترونية</div>
+          </div>
+        </div>
+
+        <!-- Device Icons Card -->
+        <div class="animated-element element-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 opacity-0">
+          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-primary/20 flex flex-col items-center justify-center p-6 cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_60px_rgba(255,128,89,0.35)]" style="background: linear-gradient(135deg, rgba(255, 128, 89, 0.15) 0%, rgba(95, 210, 187, 0.1) 100%); backdrop-filter: blur(12px);">
+            <div class="flex items-center justify-center gap-4 sm:gap-5 md:gap-6 mb-4">
+              <div class="icon-container bg-primary/25 rounded-xl p-3 shadow-md">
+                <i class="fas fa-desktop text-primary text-3xl sm:text-2xl md:text-3xl lg:text-4xl"></i>
+              </div>
+              <div class="icon-container bg-secondary/25 rounded-xl p-3 shadow-md">
+                <i class="fas fa-tablet text-secondary text-3xl sm:text-2xl md:text-3xl lg:text-4xl"></i>
+              </div>
+              <div class="icon-container bg-accent/25 rounded-xl p-3 shadow-md">
+                <i class="fas fa-mobile text-accent text-3xl sm:text-2xl md:text-3xl lg:text-4xl"></i>
+              </div>
+            </div>
+            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">متعدد المنصات</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 3: CTAs + Stats -->
+  <div class="w-full space-y-6 sm:space-y-8 lg:space-y-6">
+    <!-- CTAs Row -->
+    <div
+      class="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 animate-pop-up delay-500"
+      id="hero-ctas"
+    >
+      <!-- CTA Buttons will be injected by JS -->
+    </div>
+
+    <!-- Stats Row -->
+    <div
+      class="flex flex-col lg:flex-row flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 animate-pop-up delay-600"
+      id="hero-stats"
+    >
+      <!-- Stats will be injected by JS -->
+    </div>
+  </div>
+</div>
+</section>
