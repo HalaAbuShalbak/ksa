@@ -396,9 +396,9 @@
                     </div>
                     
                     <!-- Plans Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 plans-grid">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 plans-grid items-stretch">
                         <!-- Quarterly Plan Card -->
-                        <div class="plan-card bg-card rounded-xl shadow-lg border-2 border-border p-4 sm:p-6 hover:border-primary transition-all duration-300 hover:shadow-xl relative overflow-hidden">
+                        <div class="plan-card bg-card rounded-xl shadow-lg border-2 border-border p-4 sm:p-6 hover:border-primary transition-all duration-300 hover:shadow-xl relative overflow-hidden flex flex-col h-full">
                             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-primary"></div>
                             <div class="mb-3 sm:mb-4">
                                 <h4 class="text-lg sm:text-xl font-bold text-contrast mb-1 sm:mb-2 font-cairo">ربع سنوي</h4>
@@ -411,7 +411,7 @@
                                 </div>
                                 <p class="text-xs text-muted mt-1">99.67 ر.س شهرياً</p>
                             </div>
-                            <ul class="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+                            <ul class="space-y-2 sm:space-y-3 mb-4 sm:mb-6 flex-grow">
                                 <li class="flex items-center gap-2 text-xs sm:text-sm text-contrast">
                                     <svg class="w-4 h-4 sm:w-5 sm:h-5 text-secondary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -437,13 +437,13 @@
                                     <span>تحديثات مجانية</span>
                                 </li>
                             </ul>
-                            <button class="w-full py-2.5 sm:py-3 px-4 bg-gray-100 hover:bg-primary text-gray-700 hover:text-white rounded-lg text-sm sm:text-base font-medium transition-all duration-300 text-center">
+                            <button class="w-full py-2.5 sm:py-3 px-4 bg-gray-100 hover:bg-primary text-gray-700 hover:text-white rounded-lg text-sm sm:text-base font-medium transition-all duration-300 text-center mt-auto">
                                 اختر الباقة
                             </button>
                         </div>
                         
                         <!-- Half Year Plan Card (Featured) -->
-                        <div class="plan-card bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl shadow-xl border-2 border-primary p-4 sm:p-6 hover:shadow-2xl transition-all duration-300 relative overflow-hidden transform hover:scale-105">
+                        <div class="plan-card bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl shadow-xl border-2 border-primary p-4 sm:p-6 hover:shadow-2xl transition-all duration-300 relative overflow-hidden transform hover:scale-105 flex flex-col h-full">
                             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-accent"></div>
                             <div class="absolute top-3 left-3 sm:top-4 sm:left-4 bg-primary text-white px-2 sm:px-3 py-1 rounded-full text-xs font-bold font-cairo">
                                 الأكثر شعبية
@@ -460,7 +460,7 @@
                                 <p class="text-xs text-muted mt-1">83.17 ر.س شهرياً</p>
                                 <p class="text-xs text-primary font-semibold mt-2">توفير 17%</p>
                             </div>
-                            <ul class="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+                            <ul class="space-y-2 sm:space-y-3 mb-4 sm:mb-6 flex-grow">
                                 <li class="flex items-center gap-2 text-xs sm:text-sm text-contrast">
                                     <svg class="w-4 h-4 sm:w-5 sm:h-5 text-secondary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -492,13 +492,13 @@
                                     <span>أولوية في الدعم</span>
                                 </li>
                             </ul>
-                            <button class="w-full py-2.5 sm:py-3 px-4 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm sm:text-base font-medium transition-all duration-300 text-center shadow-lg">
+                            <button class="w-full py-2.5 sm:py-3 px-4 bg-primary hover:bg-primary/90 text-white rounded-lg text-sm sm:text-base font-medium transition-all duration-300 text-center shadow-lg mt-auto">
                                 اختر الباقة
                             </button>
                         </div>
                         
                         <!-- Yearly Plan Card -->
-                        <div class="plan-card bg-card rounded-xl shadow-lg border-2 border-border p-4 sm:p-6 hover:border-secondary transition-all duration-300 hover:shadow-xl relative overflow-hidden">
+                        <div class="plan-card bg-card rounded-xl shadow-lg border-2 border-border p-4 sm:p-6 hover:border-secondary transition-all duration-300 hover:shadow-xl relative overflow-hidden flex flex-col h-full">
                             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary to-accent"></div>
                             <div class="mb-3 sm:mb-4">
                                 <h4 class="text-lg sm:text-xl font-bold text-contrast mb-1 sm:mb-2 font-cairo">سنوي</h4>
@@ -512,7 +512,7 @@
                                 <p class="text-xs text-muted mt-1">74.92 ر.س شهرياً</p>
                                 <p class="text-xs text-secondary font-semibold mt-2">توفير 25%</p>
                             </div>
-                            <ul class="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
+                            <ul class="space-y-2 sm:space-y-3 mb-4 sm:mb-6 flex-grow">
                                 <li class="flex items-center gap-2 text-xs sm:text-sm text-contrast">
                                     <svg class="w-4 h-4 sm:w-5 sm:h-5 text-secondary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
@@ -550,7 +550,7 @@
                                     <span>ميزات حصرية</span>
                                 </li>
                             </ul>
-                            <button class="w-full py-2.5 sm:py-3 px-4 bg-secondary hover:bg-secondary/90 text-white rounded-lg text-sm sm:text-base font-medium transition-all duration-300 text-center">
+                            <button class="w-full py-2.5 sm:py-3 px-4 bg-secondary hover:bg-secondary/90 text-white rounded-lg text-sm sm:text-base font-medium transition-all duration-300 text-center mt-auto">
                                 اختر الباقة
                             </button>
                         </div>
@@ -1859,6 +1859,66 @@
                 return dateString;
             }
         }
+    </script>
+    
+    <!-- Footer -->
+    <footer
+      class="bg-contrast text-white py-8 sm:py-10 md:py-12"
+    >
+      <div
+        class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center md:text-right"
+      >
+        <!-- Logo and Copyright -->
+        <div>
+          <a
+            href="index.html"
+            class="text-2xl font-cairo font-bold text-primary block mb-4"
+            id="footer-logo"
+          ></a>
+          <p class="text-muted text-sm" id="footer-copyright"></p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-xl font-cairo font-bold text-white mb-4">
+            روابط سريعة
+          </h4>
+          <ul class="space-y-2" id="footer-quick-links">
+            <!-- Quick links will be injected by JS -->
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div>
+          <h4 class="text-xl font-cairo font-bold text-white mb-4">تابعنا</h4>
+          <div
+            class="flex justify-center md:justify-end space-x-4 space-x-reverse"
+            id="footer-socials"
+          >
+            <!-- Social icons will be injected by JS -->
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Footer Content Script -->
+    <script src="./content.js"></script>
+    <script>
+      // Populate Footer Section from content.js
+      if (typeof content !== 'undefined' && content.footer) {
+        $('#footer-logo').text(content.footer.logo);
+        $('#footer-copyright').text(content.footer.copyright);
+
+        const quickLinksContainer = $('#footer-quick-links');
+        content.footer.quickLinks.forEach(link => {
+          quickLinksContainer.append(`<li><a href="${link.href}" class="text-muted hover:text-primary transition-colors font-tajawal">${link.label}</a></li>`);
+        });
+
+        const socialIconsContainer = $('#footer-socials');
+        content.footer.socials.forEach(social => {
+          socialIconsContainer.append(`<a href="${social.href}" class="text-muted hover:text-primary transition-colors text-xl"><i class="${social.icon}"></i></a>`);
+        });
+      }
     </script>
 </body>
 </html>

@@ -282,16 +282,67 @@
     </main>
 
     <!-- Footer -->
-    <footer class="relative z-10 bg-contrast text-white py-6 mt-12">
-      <div class="container mx-auto px-4 text-center">
-        <p class="text-muted text-sm">
-          جميع الحقوق محفوظة &copy; 2023
-        </p>
+    <footer
+      class="bg-contrast text-white py-8 sm:py-10 md:py-12 animate-on-scroll"
+    >
+      <div
+        class="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 text-center md:text-right"
+      >
+        <!-- Logo and Copyright -->
+        <div>
+          <a
+            href="index.html"
+            class="text-2xl font-cairo font-bold text-primary block mb-4"
+            id="footer-logo"
+          ></a>
+          <p class="text-muted text-sm" id="footer-copyright"></p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-xl font-cairo font-bold text-white mb-4">
+            روابط سريعة
+          </h4>
+          <ul class="space-y-2" id="footer-quick-links">
+            <!-- Quick links will be injected by JS -->
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div>
+          <h4 class="text-xl font-cairo font-bold text-white mb-4">تابعنا</h4>
+          <div
+            class="flex justify-center md:justify-end space-x-4 space-x-reverse"
+            id="footer-socials"
+          >
+            <!-- Social icons will be injected by JS -->
+          </div>
+        </div>
       </div>
     </footer>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="./content.js"></script>
+    
+    <!-- Footer Content Script -->
+    <script>
+      // Populate Footer Section from content.js
+      if (typeof content !== 'undefined' && content.footer) {
+        $('#footer-logo').text(content.footer.logo);
+        $('#footer-copyright').text(content.footer.copyright);
+
+        const quickLinksContainer = $('#footer-quick-links');
+        content.footer.quickLinks.forEach(link => {
+          quickLinksContainer.append(`<li><a href="${link.href}" class="text-muted hover:text-primary transition-colors font-tajawal">${link.label}</a></li>`);
+        });
+
+        const socialIconsContainer = $('#footer-socials');
+        content.footer.socials.forEach(social => {
+          socialIconsContainer.append(`<a href="${social.href}" class="text-muted hover:text-primary transition-colors text-xl"><i class="${social.icon}"></i></a>`);
+        });
+      }
+    </script>
     
     <!-- Sign In Form Script -->
     <script>
@@ -470,190 +521,3 @@
   </body>
 </html>
 
-
-
-<section
-id="hero"
-class="relative min-h-screen py-12 sm:py-16 md:py-0 md:h-screen flex items-center overflow-hidden bg-gradient-to-br from-background via-background to-secondary/5"
-style="max-width: 100vw; overflow-x: hidden;"
->
-<!-- Enhanced Animated Blobs Background with better positioning -->
-<div class="absolute inset-0 z-0 overflow-hidden">
-  <div
-    class="blob-1 w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-br from-primary/30 to-primary/10 rounded-full absolute -top-20 -right-20 md:top-1/4 md:right-1/4 animate-blob-float mix-blend-multiply filter blur-3xl"
-  ></div>
-  <div
-    class="blob-2 w-96 h-96 sm:w-[500px] sm:h-[500px] bg-gradient-to-br from-secondary/30 to-secondary/10 rounded-full absolute bottom-0 left-0 md:bottom-1/3 md:left-1/4 animate-blob-float delay-1000 mix-blend-multiply filter blur-3xl"
-  ></div>
-  <div
-    class="blob-3 w-80 h-80 sm:w-[400px] sm:h-[400px] bg-gradient-to-br from-accent/25 to-accent/10 rounded-full absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-blob-float delay-500 mix-blend-multiply filter blur-3xl"
-  ></div>
-  <!-- Subtle grid pattern overlay -->
-  <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-40"></div>
-</div>
-
-<div
-  class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full grid grid-rows-[auto_auto_auto] gap-6 lg:gap-8"
-  style="max-width: 100vw; overflow-x: hidden;"
->
-  <!-- Row 1: Title (Full Width) -->
-  <h1
-    class="w-full text-center lg:text-right text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-cairo font-extrabold text-contrast leading-[1.1] tracking-tight animate-pop-up delay-300"
-    id="hero-title"
-    style="background: linear-gradient(135deg, #22242A 0%, #22242A 50%, #FF8059 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;"
-  ></h1>
-
-  <!-- Row 2: Subtitle + Illustration -->
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-20 items-center w-full">
-    <!-- Subtitle Column (Right on lg, Top on md/sm) -->
-    <div class="lg:order-2 text-center lg:text-right lg:flex lg:justify-end animate-pop-up delay-400">
-      <p
-        class="text-lg sm:text-xl md:text-2xl lg:text-2xl text-contrast/80 font-tajawal font-medium max-w-2xl mx-auto lg:mx-0 lg:mr-0 leading-relaxed"
-        id="hero-subtitle"
-      ></p>
-    </div>
-
-    <!-- Illustration Column (Left on lg, Bottom on md/sm) -->
-    <div class="lg:order-1 flex items-center justify-center relative min-h-[500px] sm:min-h-[550px] md:min-h-[500px] lg:min-h-0 overflow-hidden w-full animate-pop-up delay-700"
-      style="max-width: 100vw; overflow-x: hidden; will-change: auto;"
-    >
-
-      
-      <div
-        id="hero-css-illustration"
-        class="relative w-full max-w-[100%] sm:max-w-[100%] md:max-w-[700px] h-[500px] sm:h-[600px] md:h-[600px] lg:h-[650px] mx-auto overflow-visible z-10 flex items-center justify-center"
-        style="max-width: 100vw; overflow-x: hidden; contain: layout style paint; will-change: auto; transition: transform 0.3s ease;"
-      >
-      <!-- All Cards and Icons Container -->
-      <div class="animated-elements-container relative w-full h-full flex items-center justify-center">
-        <!-- Dashboard Card -->
-        <div class="animated-element element-1 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
-          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-primary/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,128,89,0.3)]" style="background: linear-gradient(135deg, rgba(255, 128, 89, 0.1) 0%, rgba(255, 128, 89, 0.05) 100%); backdrop-filter: blur(10px);">
-            <div class="icon-container bg-primary/20 rounded-2xl p-4 mb-4 shadow-lg">
-              <i class="fas fa-tachometer-alt text-primary text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
-            </div>
-            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">لوحة التحكم</div>
-          </div>
-        </div>
-
-        <!-- Review Card -->
-        <div class="animated-element element-2 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
-          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-accent/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,202,58,0.3)]" style="background: linear-gradient(135deg, rgba(255, 202, 58, 0.1) 0%, rgba(255, 202, 58, 0.05) 100%); backdrop-filter: blur(10px);">
-            <div class="icon-container bg-accent/20 rounded-2xl p-4 mb-4 shadow-lg">
-              <i class="fas fa-star text-accent text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
-            </div>
-            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">تقييمات</div>
-          </div>
-        </div>
-
-        <!-- Shopping Cart Card -->
-        <div class="animated-element element-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
-          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-secondary/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(95,210,187,0.3)]" style="background: linear-gradient(135deg, rgba(95, 210, 187, 0.1) 0%, rgba(95, 210, 187, 0.05) 100%); backdrop-filter: blur(10px);">
-            <div class="icon-container bg-secondary/20 rounded-2xl p-4 mb-4 shadow-lg">
-              <i class="fas fa-shopping-cart text-secondary text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
-            </div>
-            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">السلة</div>
-          </div>
-        </div>
-
-        <!-- QR Code Card -->
-        <div class="animated-element element-4 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
-          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-contrast/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(34,36,42,0.2)]" style="background: linear-gradient(135deg, rgba(247, 249, 250, 0.95) 0%, rgba(255, 255, 255, 0.9) 100%); backdrop-filter: blur(10px);">
-            <div class="icon-container bg-contrast/10 rounded-2xl p-4 mb-4 shadow-lg">
-              <i class="fas fa-qrcode text-contrast text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
-            </div>
-            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">رمز QR</div>
-          </div>
-        </div>
-
-        <!-- Online Menu Card -->
-        <div class="animated-element element-5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
-          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-secondary/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(95,210,187,0.3)]" style="background: linear-gradient(135deg, rgba(95, 210, 187, 0.12) 0%, rgba(95, 210, 187, 0.06) 100%); backdrop-filter: blur(10px);">
-            <div class="icon-container bg-secondary/20 rounded-2xl p-4 mb-4 shadow-lg">
-              <i class="fas fa-utensils text-secondary text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
-            </div>
-            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">القائمة الإلكترونية</div>
-          </div>
-        </div>
-
-        <!-- Laptop Review Card -->
-        <div class="animated-element element-6 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
-          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-accent/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,202,58,0.3)]" style="background: linear-gradient(135deg, rgba(255, 202, 58, 0.12) 0%, rgba(255, 202, 58, 0.06) 100%); backdrop-filter: blur(10px);">
-            <div class="icon-container bg-accent/20 rounded-2xl p-4 mb-4 shadow-lg">
-              <i class="fas fa-star text-accent text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
-            </div>
-            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-semibold text-center px-2">تقييمات العملاء</div>
-          </div>
-        </div>
-
-        <!-- Laptop Dashboard Card -->
-        <div class="animated-element element-7 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
-          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-primary/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,128,89,0.3)]" style="background: linear-gradient(135deg, rgba(255, 128, 89, 0.12) 0%, rgba(255, 128, 89, 0.06) 100%); backdrop-filter: blur(10px);">
-            <div class="icon-container bg-primary/20 rounded-2xl p-4 mb-4 shadow-lg">
-              <i class="fas fa-chart-line text-primary text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
-            </div>
-            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-semibold text-center px-2">لوحة تحكم النظام</div>
-          </div>
-        </div>
-
-        <!-- Laptop Shopping Cart Card -->
-        <div class="animated-element element-8 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
-          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-accent/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(255,202,58,0.3)]" style="background: linear-gradient(135deg, rgba(95, 210, 187, 0.15) 0%, rgba(95, 210, 187, 0.08) 100%); backdrop-filter: blur(10px);">
-            <div class="icon-container bg-accent/20 rounded-2xl p-4 mb-4 shadow-lg">
-              <i class="fas fa-shopping-cart text-accent text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
-            </div>
-            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-semibold text-center px-2">سلة التسوق</div>
-          </div>
-        </div>
-
-        <!-- Laptop Online Menu Card -->
-        <div class="animated-element element-9 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 opacity-0">
-          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-secondary/20 flex flex-col items-center justify-center cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(95,210,187,0.3)]" style="background: linear-gradient(135deg, rgba(255, 128, 89, 0.08) 0%, rgba(95, 210, 187, 0.05) 100%); backdrop-filter: blur(10px);">
-            <div class="icon-container bg-secondary/20 rounded-2xl p-4 mb-4 shadow-lg">
-              <i class="fas fa-utensils text-secondary text-5xl sm:text-4xl md:text-5xl lg:text-6xl"></i>
-            </div>
-            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-semibold text-center px-2">القائمة الإلكترونية</div>
-          </div>
-        </div>
-
-        <!-- Device Icons Card -->
-        <div class="animated-element element-10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 opacity-0">
-          <div class="professional-card w-full h-full rounded-2xl shadow-2xl border border-primary/20 flex flex-col items-center justify-center p-6 cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105 hover:shadow-[0_25px_60px_rgba(255,128,89,0.35)]" style="background: linear-gradient(135deg, rgba(255, 128, 89, 0.15) 0%, rgba(95, 210, 187, 0.1) 100%); backdrop-filter: blur(12px);">
-            <div class="flex items-center justify-center gap-4 sm:gap-5 md:gap-6 mb-4">
-              <div class="icon-container bg-primary/25 rounded-xl p-3 shadow-md">
-                <i class="fas fa-desktop text-primary text-3xl sm:text-2xl md:text-3xl lg:text-4xl"></i>
-              </div>
-              <div class="icon-container bg-secondary/25 rounded-xl p-3 shadow-md">
-                <i class="fas fa-tablet text-secondary text-3xl sm:text-2xl md:text-3xl lg:text-4xl"></i>
-              </div>
-              <div class="icon-container bg-accent/25 rounded-xl p-3 shadow-md">
-                <i class="fas fa-mobile text-accent text-3xl sm:text-2xl md:text-3xl lg:text-4xl"></i>
-              </div>
-            </div>
-            <div class="text-base sm:text-sm md:text-base lg:text-lg text-contrast font-cairo font-bold text-center px-2">متعدد المنصات</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Row 3: CTAs + Stats -->
-  <div class="w-full space-y-6 sm:space-y-8 lg:space-y-6">
-    <!-- CTAs Row -->
-    <div
-      class="flex flex-col sm:flex-row justify-center lg:justify-start items-center gap-4 animate-pop-up delay-500"
-      id="hero-ctas"
-    >
-      <!-- CTA Buttons will be injected by JS -->
-    </div>
-
-    <!-- Stats Row -->
-    <div
-      class="flex flex-col lg:flex-row flex-wrap justify-center lg:justify-start gap-4 sm:gap-6 animate-pop-up delay-600"
-      id="hero-stats"
-    >
-      <!-- Stats will be injected by JS -->
-    </div>
-  </div>
-</div>
-</section>

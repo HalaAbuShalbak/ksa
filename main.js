@@ -1,14 +1,10 @@
 $(document).ready(function() {
     const mobileMenuButton = $('#mobile-menu-button');
-    const closeMobileMenu = $('#close-mobile-menu');
     const mobileMenu = $('#mobile-menu');
 
+    // Toggle mobile menu
     mobileMenuButton.on('click', function() {
-        mobileMenu.removeClass('hidden');
-    });
-
-    closeMobileMenu.on('click', function() {
-        mobileMenu.addClass('hidden');
+        mobileMenu.toggleClass('hidden');
     });
 
     // Close mobile menu when a navigation link is clicked
@@ -103,8 +99,8 @@ $(document).ready(function() {
             });
 
             pricingPlans.append(`
-                <div class="pricing-card bg-card p-8 rounded-lg border-2 ${highlightedClass} animate-on-scroll delay-${index * 150} flex flex-col">
-                    ${plan.highlighted ? '<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-contrast text-sm font-bold px-4 py-1 rounded-full">الأكثر شعبية</div>' : ''}
+                <div class="pricing-card bg-card p-8 rounded-lg border-2 ${highlightedClass} animate-on-scroll delay-${index * 150} flex flex-col h-full relative">
+                    ${plan.highlighted ? '<div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-accent text-contrast text-sm font-bold px-4 py-1 rounded-full z-10">الأكثر شعبية</div>' : ''}
                     <h3 class="text-2xl font-cairo font-bold text-contrast mb-2">${plan.plan}</h3>
                     <p class="text-contrast-light mb-4">${plan.period}</p>
                     <div class="text-4xl font-cairo font-extrabold text-primary mb-6">${plan.price}</div>
